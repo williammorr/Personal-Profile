@@ -6,6 +6,9 @@
 // Following September 2025 best practices
 // =============================================================================
 
+@use '../abstracts' as *;
+@use 'sass:color';
+
 // -----------------------------------------------------------------------------
 // Navbar Base Styles
 // -----------------------------------------------------------------------------
@@ -27,7 +30,7 @@
 
         &:hover,
         &:focus {
-            color: darken($theme-primary, 10%);
+            color: color.adjust($theme-primary, $lightness: -10%);
         }
     }
 
@@ -93,7 +96,7 @@
 
                 &:hover,
                 &:focus {
-                    color: darken($theme-primary, 10%);
+                    color: color.adjust($theme-primary, $lightness: -10%);
                 }
             }
 

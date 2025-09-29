@@ -6,46 +6,44 @@
 // =============================================================================
 // Main Stylesheet - Modular SCSS Architecture (September 2025)
 // =============================================================================
-// This file imports all SCSS partials in the correct order following the
-// 7-1 pattern: abstracts, base, components, layout, pages, themes, vendors
+// This file uses modern Sass module system (@use/@forward) instead of @import
+// Following the 7-1 pattern: abstracts, base, components, layout, pages, vendors
+// All legacy @import dependencies have been migrated to @use
 // =============================================================================
 
 // -----------------------------------------------------------------------------
 // Abstracts - Design Tokens & Utilities
 // -----------------------------------------------------------------------------
 // Variables, functions, and mixins - no CSS output
-@import "abstracts/variables";
-@import "abstracts/functions";
-@import "abstracts/mixins";
+// Loaded first as they're used by all other modules
+@use 'abstracts';
 
 // -----------------------------------------------------------------------------
 // Base - Foundation Styles
 // -----------------------------------------------------------------------------
 // Reset, typography, and utility classes
-@import "base/reset";
-@import "base/typography";
-@import "base/utilities";
+@use 'base';
 
 // -----------------------------------------------------------------------------
 // Components - Reusable UI Elements
 // -----------------------------------------------------------------------------
-// Buttons, service boxes, portfolio boxes extracted from legacy _base.scss
-@import "components/buttons";
-@import "components/service-box";
-@import "components/portfolio-box";
+// Buttons, service boxes, portfolio boxes
+@use 'components';
 
 // -----------------------------------------------------------------------------
 // Layout - Page Structure
 // -----------------------------------------------------------------------------
 // Navigation, header, sections, and contact layout
-@import "layout/navigation";
-@import "layout/header";
-@import "layout/sections";
-@import "layout/contact";
+@use 'layout';
 
 // -----------------------------------------------------------------------------
-// Legacy Imports (Temporary - will be cleaned up in Week 7-8)
+// Pages - Page-Specific Styles
 // -----------------------------------------------------------------------------
-// Remaining monolithic _base.scss contains duplicates and extras
-@import "base";
-@import "mixins";  // Old mixins file (for backward compatibility during transition)
+// Browser customizations and page-specific overrides
+@use 'pages/extras';
+
+// -----------------------------------------------------------------------------
+// Vendors - Third-Party Overrides
+// -----------------------------------------------------------------------------
+// Bootstrap 5 customizations
+@use 'vendors/bootstrap-overrides';

@@ -1,0 +1,10 @@
+// =============================================================================
+// Components Index - Modern @forward Pattern
+// =============================================================================
+// Forwards all component partials for centralized importing
+// Following September 2025 Sass module system best practices
+// =============================================================================
+
+@forward 'buttons';
+@forward 'service-box';
+@forward 'portfolio-box';
