@@ -1,10 +1,10 @@
 # Site settings
 title: William M. Orr
-email: Wotech4@live.com
-description: 'Portfolio of William M. Orr - Software Engineer & Developer'
+email: wotech4@live.com
+description: 'Portfolio of William M. Orr - Director of IT | IT Manager | IT Field Ops Manager'
 author: William M. Orr
 baseurl: "/Personal-Profile" # Project site subpath
-url: "https://williammorr.github.io" # the base hostname & protocol for your site
+url: "https://worr.com" # the base hostname & protocol for your site
 
 twitter_username: wmorr
 github_username: williammorr
@@ -14,76 +14,76 @@ brand_name: William M. Orr
 
 # Hero/Header Section
 hero:
-  heading: Your Favorite Source of Free Bootstrap Themes
-  description: Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!
-  button_text: Find Out More
-  button_link: "#about"
+  heading: William M. Orr – IT Leadership Portfolio
+  description: Skilled IT leader with 12+ years of experience driving enterprise IT strategy, field operations, acquisitions, and infrastructure standardization across the U.S., Canada, and Puerto Rico. Proven success in delivering secure, scalable solutions that reduce costs and improve efficiency.
+  button_text: View My Work
+  button_link: "#portfolio"
 
 # Call to Action Section
 cta:
-  heading: We've got what you need!
-  description: Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!
-  button_text: Get Started!
+  heading: Driving IT Transformation & Operational Excellence
+  description: From capital construction and large-scale acquisitions to Cisco network standardization and VoIP migrations, I deliver innovative IT strategies that align with business growth and reduce costs. Explore my portfolio to see how I’ve led organizations through complex transitions.
+  button_text: Learn More
   button_link: "#services"
 
 # Services Section
 services:
-  heading: At Your Service
+  heading: Core Competencies
   list:
     - icon: fa-diamond
-      title: Sturdy Templates
-      description: Our templates are updated regularly so they don't break.
+      title: IT Strategy & Leadership
+      description: Over a decade of experience aligning IT strategy with sustainable business growth, managing multimillion-dollar budgets, and directing cross-functional teams.
       delay: 0
     - icon: fa-paper-plane
-      title: Ready to Ship
-      description: You can use this theme as is, or you can make changes!
+      title: Network & VoIP Standardization
+      description: Led U.S., Canada, and Puerto Rico infrastructure conversions to Cisco-based systems and SIP VoIP, delivering $10M in telecom savings.
       delay: .1s
     - icon: fa-newspaper
-      title: Up to Date
-      description: We update dependencies to keep things fresh.
+      title: Capital Construction & Acquisitions
+      description: Managed 2,500+ IT standardization projects, 100+ acquisitions, and enterprise construction initiatives including cost analysis, supplier negotiations, and ISP provisioning.
       delay: .2s
     - icon: fa-heart
-      title: Made with Love
-      description: You have to make your websites with love these days!
+      title: Team Development
+      description: Built and mentored high-performing IT teams, ensuring on-time delivery, process improvements, and standardized support for thousands of locations.
       delay: .3s
 
 # Portfolio Section
 portfolio:
   - image: img/portfolio/1.jpg
-    category: Category
-    name: Project Name
+    category: Enterprise IT
+    name: SCI – Senior IT Manager / Interim Director
     link: "#"
   - image: img/portfolio/2.jpg
-    category: Category
-    name: Project Name
+    category: IT Field Ops
+    name: SCI – IT Manager & Field Ops Manager
     link: "#"
   - image: img/portfolio/3.jpg
-    category: Category
-    name: Project Name
+    category: Infrastructure Projects
+    name: 2,500+ Network & VoIP Standardization Projects
     link: "#"
   - image: img/portfolio/4.jpg
-    category: Category
-    name: Project Name
+    category: Mergers & Acquisitions
+    name: Integration of 100+ Acquisitions
     link: "#"
   - image: img/portfolio/5.jpg
-    category: Category
-    name: Project Name
+    category: Vendor & ISP Negotiations
+    name: Telecom & ISP Contracting with $10M Savings
     link: "#"
   - image: img/portfolio/6.jpg
-    category: Category
-    name: Project Name
+    category: Field Services Leadership
+    name: Meriplex – Field Services Manager & Project Manager
     link: "#"
 
 # Aside Section
 aside:
-  heading: Free Download at Start Bootstrap!
-  button_text: Download Now!
-  button_link: "#"
+  heading: Explore My Full Portfolio & References
+  button_text: Visit My Website
+  button_link: "https://worr.com"
 
 # Contact Section
 contact:
-  heading: Let's Get In Touch!
-  description: Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+  heading: Let’s Get In Touch!
+  description: Interested in IT leadership, infrastructure transformation, or strategic consulting? Reach out by email or phone, or connect via my website. I’ll get back to you as soon as possible.
 
 # Build settings
 markdown: kramdown
