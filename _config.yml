@@ -1,8 +1,8 @@
 # Site settings
-title: wmorr
+title: William M. Orr
 email: Wotech4@live.com
-description: 'Check out my website'
-author: wmorr
+description: 'Portfolio of William M. Orr - Software Engineer & Developer'
+author: William M. Orr
 baseurl: "/" # the subpath of your site, e.g. /blog/
 url: "https://wmorr.github.io" # the base hostname & protocol for your site
 
@@ -10,7 +10,7 @@ twitter_username: wmorr
 github_username: wmorr
 
 # Navigation
-brand_name: wmorr
+brand_name: William M. Orr
 
 # Hero/Header Section
 hero:

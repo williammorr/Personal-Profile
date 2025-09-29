@@ -4,11 +4,11 @@ A personal portfolio website built with Jekyll 4.4+ using the [Creative Theme](h
 
 **✨ Key Features:**
 - Fully tokenized configuration - all content managed through `_config.yml`
-- Modular section-based architecture
-- Responsive Bootstrap design
-- Font Awesome icons
+- Modern modular SCSS architecture (7-1 pattern with Sass modules)
+- Bootstrap 5.3.8 with responsive design
+- Font Awesome 6.7.2 icons
 - Smooth scrolling animations
-- GitHub Pages ready
+- GitHub Pages ready with automated deployment
 
 **🔗 Live Site:** [https://wmorr.github.io](https://wmorr.github.io)
 
@@ -174,7 +174,7 @@ services:
       delay: .1s
 ```
 
-**Available Font Awesome Icons:** See [Font Awesome 4.7 icons](https://fontawesome.com/v4/icons/)
+**Available Font Awesome Icons:** See [Font Awesome 6 Free icons](https://fontawesome.com/search?o=r&m=free) (use `fa-solid` or `fa-brands` prefix)
 
 ### Portfolio Section
 Showcase projects with images:
@@ -228,8 +228,15 @@ Social links (Twitter, Email, GitHub) are shown automatically using the username
 │   └── scripts.html    # JavaScript includes
 ├── _layouts/
 │   └── front.html      # Main layout composing all sections
-├── _sass/              # SCSS partials
-├── css/                # Compiled styles
+├── _sass/              # Modern SCSS architecture (7-1 pattern)
+│   ├── abstracts/      # Variables, functions, mixins
+│   ├── base/           # Reset, typography, utilities
+│   ├── components/     # Buttons, service-box, portfolio-box
+│   ├── layout/         # Navigation, header, sections, contact
+│   ├── pages/          # Page-specific styles
+│   └── vendors/        # Bootstrap overrides
+├── css/
+│   └── main.scss       # Master stylesheet (uses @use/@forward)
 ├── img/                # Images and graphics
 ├── js/                 # JavaScript files
 ├── _config.yml         # Site configuration (edit this!)
@@ -239,89 +246,49 @@ Social links (Twitter, Email, GitHub) are shown automatically using the username
 
 **To reorder or remove sections:** Edit `_layouts/front.html` and rearrange the `{% include %}` statements.
 
+### Modern SCSS Architecture
+
+This project uses the **7-1 Pattern** with modern Sass module system (`@use`/`@forward`):
+
+- **No deprecation warnings** - Uses `color.adjust()` instead of deprecated `darken()`
+- **CSS Custom Properties** - Runtime theming support for future light/dark modes
+- **Modular & maintainable** - Each component in its own file
+- **BEM-ready** - Structured for easy migration to BEM naming
+- **Bootstrap 5 compatible** - Modern grid and components
+
 ---
 
 ## Deploying to GitHub Pages
 
 This site is configured as a **user site** (`wmorr.github.io`), meaning it will be available at `https://wmorr.github.io`.
 
-### Step 1: Create GitHub Actions Workflow
+### Automated Deployment (Recommended)
 
-Create `.github/workflows/jekyll.yml`:
+The repository includes a **GitHub Actions workflow** (`.github/workflows/jekyll.yml`) that automatically builds and deploys your site on every push to the `master` branch.
 
-```yaml
-name: Build and deploy Jekyll to GitHub Pages
+**Setup Steps:**
 
-on:
-  push:
-    branches: ["master"]  # or "main" if that's your default branch
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
-
-      - name: Build site
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-### Step 2: Enable GitHub Pages
+### Step 1: Enable GitHub Pages
 
 1. Go to your repository on GitHub
 2. Navigate to **Settings** → **Pages**
 3. Under **Build and deployment**, select **GitHub Actions** (not "Deploy from branch")
 
-### Step 3: Push and Deploy
+### Step 2: Push Changes
 
 ```bash
 git add .
-git commit -m "Add GitHub Pages deployment workflow"
+git commit -m "Deploy site to GitHub Pages"
 git push origin master
 ```
 
-GitHub Actions will automatically build and deploy your site. Check the **Actions** tab to monitor progress.
+GitHub Actions will automatically:
+1. Build the Jekyll site with modern Sass compilation
+2. Deploy to GitHub Pages
 
-Once the workflow completes (green checkmark), your site will be live at **https://wmorr.github.io**
+**Monitor progress:** Check the **Actions** tab in your repository for build status.
+
+Once the workflow completes (✅ green checkmark), your site will be live at **https://wmorr.github.io**
 
 ### Important: URL Configuration
 
@@ -381,13 +348,33 @@ portfolio:
 
 ## Theme Customization
 
-Theme colors are defined in `css/main.scss`:
+### Colors
+
+Theme colors are defined as **CSS Custom Properties** in `_sass/abstracts/_variables.scss`:
+
 ```scss
-$theme-primary: #F05F40;  // Primary color (buttons, links)
-$theme-dark: #222;        // Dark sections background
+:root {
+  --color-primary: #F05F40;       // Primary color (buttons, links)
+  --color-primary-dark: #d94621;  // Hover states
+  --color-dark: #222;              // Dark sections background
+  --color-light: #fff;             // Light sections background
+}
 ```
 
-Change these values to customize the color scheme, then rebuild the site.
+**Benefits of CSS Custom Properties:**
+- Runtime theming (can be changed without rebuilding)
+- Future-ready for light/dark mode switching
+- Browser DevTools can inspect/change values live
+
+### Backward Compatibility
+
+SCSS variables are still available for color functions:
+```scss
+$theme-primary: #F05F40;
+$theme-dark: #222;
+```
+
+Change values in `_sass/abstracts/_variables.scss` and rebuild (`bundle exec jekyll build`).
 
 ---
 
