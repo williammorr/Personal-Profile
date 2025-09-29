@@ -3,11 +3,11 @@ title: William M. Orr
 email: Wotech4@live.com
 description: 'Portfolio of William M. Orr - Software Engineer & Developer'
 author: William M. Orr
-baseurl: "/" # the subpath of your site, e.g. /blog/
-url: "https://wmorr.github.io" # the base hostname & protocol for your site
+baseurl: "/Personal-Profile" # Project site subpath
+url: "https://williammorr.github.io" # the base hostname & protocol for your site
 
 twitter_username: wmorr
-github_username: wmorr
+github_username: williammorr
 
 # Navigation
 brand_name: William M. Orr
