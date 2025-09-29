@@ -3,42 +3,24 @@
 
 @charset "utf-8";
 
-// Example Defaults
-// $base-font-family: Helvetica, Arial, sans-serif;
-// $base-font-size:   16px;
-// $small-font-size:  $base-font-size * 0.875;
-// $base-line-height: 1.5;
+// =============================================================================
+// Main Stylesheet - Modular SCSS Architecture (September 2025)
+// =============================================================================
+// This file imports all SCSS partials in the correct order following the
+// 7-1 pattern: abstracts, base, components, layout, pages, themes, vendors
+// =============================================================================
 
-// $spacing-unit:     30px;
+// -----------------------------------------------------------------------------
+// Abstracts - Design Tokens & Utilities
+// -----------------------------------------------------------------------------
+// Variables, functions, and mixins - no CSS output
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
 
-// $text-color:       #111;
-// $background-color: #fdfdfd;
-// $brand-color:      #2a7ae2;
-
-// $grey-color:       #828282;
-// $grey-color-light: lighten($grey-color, 40%);
-// $grey-color-dark:  darken($grey-color, 25%);
-
-// // Width of the content area
-// $content-width:    800px;
-
-// $on-palm:          600px;
-// $on-laptop:        800px;
-
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-
-// variables.less
-$theme-primary: #F05F40;
-$theme-dark: #222;
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "mixins",
-        "base"
-;
+// -----------------------------------------------------------------------------
+// Legacy Imports (Temporary - will be split in Week 4)
+// -----------------------------------------------------------------------------
+// These monolithic files will be refactored into modular components
+@import "base";
+@import "mixins";  // Old mixins file (for backward compatibility during transition)
