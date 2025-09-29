@@ -3,42 +3,47 @@
 
 @charset "utf-8";
 
-// Example Defaults
-// $base-font-family: Helvetica, Arial, sans-serif;
-// $base-font-size:   16px;
-// $small-font-size:  $base-font-size * 0.875;
-// $base-line-height: 1.5;
+// =============================================================================
+// Main Stylesheet - Modular SCSS Architecture (September 2025)
+// =============================================================================
+// This file uses modern Sass module system (@use/@forward) instead of @import
+// Following the 7-1 pattern: abstracts, base, components, layout, pages, vendors
+// All legacy @import dependencies have been migrated to @use
+// =============================================================================
 
-// $spacing-unit:     30px;
+// -----------------------------------------------------------------------------
+// Abstracts - Design Tokens & Utilities
+// -----------------------------------------------------------------------------
+// Variables, functions, and mixins - no CSS output
+// Loaded first as they're used by all other modules
+@use 'abstracts';
 
-// $text-color:       #111;
-// $background-color: #fdfdfd;
-// $brand-color:      #2a7ae2;
+// -----------------------------------------------------------------------------
+// Base - Foundation Styles
+// -----------------------------------------------------------------------------
+// Reset, typography, and utility classes
+@use 'base';
 
-// $grey-color:       #828282;
-// $grey-color-light: lighten($grey-color, 40%);
-// $grey-color-dark:  darken($grey-color, 25%);
+// -----------------------------------------------------------------------------
+// Components - Reusable UI Elements
+// -----------------------------------------------------------------------------
+// Buttons, service boxes, portfolio boxes
+@use 'components';
 
-// // Width of the content area
-// $content-width:    800px;
+// -----------------------------------------------------------------------------
+// Layout - Page Structure
+// -----------------------------------------------------------------------------
+// Navigation, header, sections, and contact layout
+@use 'layout';
 
-// $on-palm:          600px;
-// $on-laptop:        800px;
+// -----------------------------------------------------------------------------
+// Pages - Page-Specific Styles
+// -----------------------------------------------------------------------------
+// Browser customizations and page-specific overrides
+@use 'pages/extras';
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-
-// variables.less
-$theme-primary: #F05F40;
-$theme-dark: #222;
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "mixins",
-        "base"
-;
+// -----------------------------------------------------------------------------
+// Vendors - Third-Party Overrides
+// -----------------------------------------------------------------------------
+// Bootstrap 5 customizations
+@use 'vendors/bootstrap-overrides';

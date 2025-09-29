@@ -1,0 +1,116 @@
+// =============================================================================
+// Design Tokens - CSS Custom Properties (September 2025 Best Practices)
+// =============================================================================
+// All design tokens are defined as CSS custom properties for:
+// - Runtime theming (future light/dark mode support)
+// - Single source of truth for design values
+// - Easy maintenance without recompilation
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Brand Colors
+  // ---------------------------------------------------------------------------
+  --color-primary: #F05F40;
+  --color-primary-dark: #d94621;      // ~10% darker
+  --color-primary-light: #ff7759;     // ~10% lighter
+
+  --color-dark: #222;
+  --color-light: #fff;
+
+  // ---------------------------------------------------------------------------
+  // Semantic Colors
+  // ---------------------------------------------------------------------------
+  --color-text: #222;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --color-text-faded: rgba(255, 255, 255, 0.7);
+
+  --color-border: rgba(34, 34, 34, 0.5);
+  --color-border-light: rgba(255, 255, 255, 0.3);
+
+  // ---------------------------------------------------------------------------
+  // Background Colors
+  // ---------------------------------------------------------------------------
+  --bg-primary: var(--color-primary);
+  --bg-dark: var(--color-dark);
+  --bg-light: var(--color-light);
+
+  // ---------------------------------------------------------------------------
+  // Spacing Scale (8pt Grid System)
+  // ---------------------------------------------------------------------------
+  --space-0: 0;
+  --space-xs: 0.5rem;     // 8px
+  --space-sm: 1rem;       // 16px
+  --space-md: 1.25rem;    // 20px
+  --space-lg: 2rem;       // 32px
+  --space-xl: 3.125rem;   // 50px
+  --space-2xl: 6.25rem;   // 100px
+
+  // ---------------------------------------------------------------------------
+  // Typography
+  // ---------------------------------------------------------------------------
+  --font-sans: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+
+  --font-size-base: 16px;
+  --font-size-sm: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+
+  --line-height-base: 1.5;
+  --line-height-tight: 1.2;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
+  // ---------------------------------------------------------------------------
+  // Transitions
+  // ---------------------------------------------------------------------------
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s ease;
+  --transition-slow: 0.5s ease;
+
+  // ---------------------------------------------------------------------------
+  // Shadows
+  // ---------------------------------------------------------------------------
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  // ---------------------------------------------------------------------------
+  // Border Radius
+  // ---------------------------------------------------------------------------
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 10px;
+  --radius-pill: 300px;
+
+  // ---------------------------------------------------------------------------
+  // Z-Index Scale
+  // ---------------------------------------------------------------------------
+  --z-base: 1;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+// =============================================================================
+// SCSS Variables for Backward Compatibility
+// =============================================================================
+// These SCSS variables reference CSS custom properties above
+// Use in SCSS functions (darken, lighten) where CSS vars don't work
+// =============================================================================
+
+$theme-primary: #F05F40;
+$theme-dark: #222;
+
+// Extract from CSS custom properties for use in SCSS calculations
+$color-primary: #F05F40;
+$color-dark: #222;
+$color-light: #fff;
