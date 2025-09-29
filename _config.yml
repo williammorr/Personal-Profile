@@ -38,7 +38,7 @@ services:
       title: Ready to Ship
       description: You can use this theme as is, or you can make changes!
       delay: .1s
-    - icon: fa-newspaper-o
+    - icon: fa-newspaper
       title: Up to Date
       description: We update dependencies to keep things fresh.
       delay: .2s

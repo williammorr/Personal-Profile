@@ -67,14 +67,14 @@ aside {
     padding: 0;
 }
 
-// Navigation
+// Navigation (Bootstrap 5 compatible)
 
-.navbar-default {
+.navbar-light {
     background-color: white;
-    border-color: rgba($theme-dark, .5);
     @include sans-serif-font;
     @include transition-all;
-    .navbar-header .navbar-brand {
+
+    .navbar-brand {
         color: $theme-primary;
         @include sans-serif-font;
         font-weight: 700;
@@ -84,51 +84,50 @@ aside {
             color: darken($theme-primary, 10%);
         }
     }
-    .nav {
-        > li {
-            > a,
-            > a:focus {
-                text-transform: uppercase;
-                font-weight: 700;
-                font-size: 13px;
-                color: $theme-dark;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
-            &.active {
-                > a,
-                > a:focus {
-                    color: $theme-primary !important;
-                    background-color: transparent;
-                    &:hover {
-                        background-color: transparent;
-                    }
-                }
+
+    .navbar-nav {
+        .nav-link {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 13px;
+            color: $theme-dark;
+            &:hover,
+            &:focus {
+                color: $theme-primary;
             }
         }
+
+        .nav-item.active .nav-link {
+            color: $theme-primary;
+        }
     }
-    @media (min-width: 768px) {
+
+    // Transparent navbar on desktop
+    @media (min-width: 992px) {
         background-color: transparent;
-        border-color: rgba(white, .3);
-        .navbar-header .navbar-brand {
+
+        .navbar-brand {
             color: rgba(white, .7);
             &:hover,
             &:focus {
                 color: white;
             }
         }
-        .nav > li > a,
-        .nav > li > a:focus {
+
+        .navbar-nav .nav-link {
             color: rgba(white, .7);
-            &:hover {
+            &:hover,
+            &:focus {
                 color: white;
             }
         }
+
+        // Solid background when scrolled (affix)
         &.affix {
             background-color: white;
-            border-color: rgba($theme-dark, .5);
-            .navbar-header .navbar-brand {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            .navbar-brand {
                 color: $theme-primary;
                 font-size: 14px;
                 &:hover,
@@ -136,10 +135,11 @@ aside {
                     color: darken($theme-primary, 10%);
                 }
             }
-            .nav > li > a,
-            .nav > li > a:focus {
+
+            .navbar-nav .nav-link {
                 color: $theme-dark;
-                &:hover {
+                &:hover,
+                &:focus {
                     color: $theme-primary;
                 }
             }
@@ -294,25 +294,32 @@ header {
     padding-left:0;
 }
 
-// Button Styles
-.btn-default {
-    @include button-variant($theme-dark, white, white);
+// Button Styles (Bootstrap 5 compatible)
+
+// Custom button base styles
+.btn {
+    @include sans-serif-font;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include transition-all;
 }
 
+// Primary button (white text on primary background)
 .btn-primary {
     @include button-variant(white, $theme-primary, $theme-primary);
 }
 
-.btn {
-    @include sans-serif-font;
-    border: none;
-    border-radius: 300px;
-    font-weight: 700;
-    text-transform: uppercase;
+// Default/Outline button (dark text on white background)
+.btn-default,
+.btn-outline-secondary {
+    @include button-variant($theme-dark, white, white);
 }
 
+// Extra large button size
 .btn-xl {
     padding: 15px 30px;
+    font-size: 1rem;
 }
 
 // Contact
