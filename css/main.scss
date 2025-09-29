@@ -19,8 +19,16 @@
 @import "abstracts/mixins";
 
 // -----------------------------------------------------------------------------
-// Legacy Imports (Temporary - will be split in Week 4)
+// Base - Foundation Styles
 // -----------------------------------------------------------------------------
-// These monolithic files will be refactored into modular components
+// Reset, typography, and utility classes
+@import "base/reset";
+@import "base/typography";
+@import "base/utilities";
+
+// -----------------------------------------------------------------------------
+// Legacy Imports (Temporary - will be split in Weeks 5-8)
+// -----------------------------------------------------------------------------
+// Remaining monolithic _base.scss will be extracted into components/ and layout/
 @import "base";
 @import "mixins";  // Old mixins file (for backward compatibility during transition)
