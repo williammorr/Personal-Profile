@@ -1,12 +1,89 @@
 # Site settings
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site
+title: wmorr
+email: Wotech4@live.com
+description: 'Check out my website'
+author: wmorr
+baseurl: "/" # the subpath of your site, e.g. /blog/
+url: "https://wmorr.github.io" # the base hostname & protocol for your site
 
-twitter_username:
-github_username:
+twitter_username: wmorr
+github_username: wmorr
+
+# Navigation
+brand_name: wmorr
+
+# Hero/Header Section
+hero:
+  heading: Your Favorite Source of Free Bootstrap Themes
+  description: Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!
+  button_text: Find Out More
+  button_link: "#about"
+
+# Call to Action Section
+cta:
+  heading: We've got what you need!
+  description: Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!
+  button_text: Get Started!
+  button_link: "#services"
+
+# Services Section
+services:
+  heading: At Your Service
+  list:
+    - icon: fa-diamond
+      title: Sturdy Templates
+      description: Our templates are updated regularly so they don't break.
+      delay: 0
+    - icon: fa-paper-plane
+      title: Ready to Ship
+      description: You can use this theme as is, or you can make changes!
+      delay: .1s
+    - icon: fa-newspaper
+      title: Up to Date
+      description: We update dependencies to keep things fresh.
+      delay: .2s
+    - icon: fa-heart
+      title: Made with Love
+      description: You have to make your websites with love these days!
+      delay: .3s
+
+# Portfolio Section
+portfolio:
+  - image: img/portfolio/1.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+  - image: img/portfolio/2.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+  - image: img/portfolio/3.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+  - image: img/portfolio/4.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+  - image: img/portfolio/5.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+  - image: img/portfolio/6.jpg
+    category: Category
+    name: Project Name
+    link: "#"
+
+# Aside Section
+aside:
+  heading: Free Download at Start Bootstrap!
+  button_text: Download Now!
+  button_link: "#"
+
+# Contact Section
+contact:
+  heading: Let's Get In Touch!
+  description: Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
 
 # Build settings
 markdown: kramdown
