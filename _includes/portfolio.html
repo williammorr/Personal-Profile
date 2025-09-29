@@ -4,7 +4,7 @@
             {% for item in site.portfolio %}
             <div class="col-lg-4 col-sm-6">
                 <a href="{{ item.link }}" class="portfolio-box">
-                    <img src="{{ item.image }}" class="img-responsive" alt="">
+                    <img src="{{ item.image | relative_url }}" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">

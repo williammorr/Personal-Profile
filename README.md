@@ -10,7 +10,7 @@ A personal portfolio website built with Jekyll 4.4+ using the [Creative Theme](h
 - Smooth scrolling animations
 - GitHub Pages ready with automated deployment
 
-**🔗 Live Site:** [https://wmorr.github.io](https://wmorr.github.io)
+**🔗 Live Site:** [https://williammorr.github.io/Personal-Profile](https://williammorr.github.io/Personal-Profile)
 
 ---
 
@@ -39,8 +39,8 @@ gem install bundler
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/wmorr/wmorr.github.io.git
-   cd wmorr.github.io
+   git clone https://github.com/williammorr/Personal-Profile.git
+   cd Personal-Profile
    ```
 
 2. **Install dependencies:**
@@ -260,7 +260,7 @@ This project uses the **7-1 Pattern** with modern Sass module system (`@use`/`@f
 
 ## Deploying to GitHub Pages
 
-This site is configured as a **user site** (`wmorr.github.io`), meaning it will be available at `https://wmorr.github.io`.
+This site is configured as a **project site** (`Personal-Profile`), meaning it will be available at `https://williammorr.github.io/Personal-Profile`.
 
 ### Automated Deployment (Recommended)
 
@@ -288,19 +288,23 @@ GitHub Actions will automatically:
 
 **Monitor progress:** Check the **Actions** tab in your repository for build status.
 
-Once the workflow completes (✅ green checkmark), your site will be live at **https://wmorr.github.io**
+Once the workflow completes (✅ green checkmark), your site will be live at **https://williammorr.github.io/Personal-Profile**
 
 ### Important: URL Configuration
 
-For a **user site** (repo named `username.github.io`):
-- `url`: `"https://wmorr.github.io"`
-- `baseurl`: `"/"` or `""` (either works)
+For a **project site** (repo named `Personal-Profile`):
+- `url`: `"https://williammorr.github.io"`
+- `baseurl`: `"/Personal-Profile"` (must match repository name exactly)
 
 These are already correctly configured in your `_config.yml`.
+
+**Why the baseurl matters:** Project sites are served from a subdirectory, so all links need the `/Personal-Profile` prefix to work correctly.
 
 ---
 
 ## Troubleshooting
+
+### Local Development Issues
 
 **"Could not locate Gemfile"**
 - Make sure you're in the project directory
@@ -309,23 +313,42 @@ These are already correctly configured in your `_config.yml`.
 **"bundle: command not found"**
 - Bundler isn't installed. Run `gem install bundler`
 
-**Site builds but CSS/images don't load**
-- Check that `baseurl` in `_config.yml` is set to `"/"`
-- Clear your browser cache
+**Site builds but CSS/images don't load locally**
+- The site is configured for project site deployment with `baseurl: "/Personal-Profile"`
+- When testing locally, use: `bundle exec jekyll serve --baseurl ""`
+- Or visit: `http://localhost:4000/Personal-Profile/`
+
+### GitHub Pages Deployment Issues
+
+**404 Error on GitHub Pages**
+- ✅ **Repository name:** Must be `Personal-Profile` (case-sensitive)
+- ✅ **GitHub Pages enabled:** Settings → Pages → Source: "GitHub Actions"
+- ✅ **Baseurl matches repo name:** `_config.yml` has `baseurl: "/Personal-Profile"`
+- ✅ **Branch is correct:** Workflow triggers on `master` branch
+- ✅ **Workflow file exists:** `.github/workflows/jekyll.yml` is present
+
+**CSS/JS/Images don't load on GitHub Pages (404 errors)**
+- Check that `baseurl` in `_config.yml` is set to `"/Personal-Profile"` (must match repository name exactly)
+- Verify all asset links use `| relative_url` filter in templates
+- Check browser console for 404 errors showing the wrong path
 
 **GitHub Actions build fails**
-- Check the Actions tab for error details
-- Ensure `Gemfile` has no syntax errors
-- Verify all image paths in `_config.yml` point to existing files
-
-**Local site looks different from GitHub Pages**
-- Make sure you're using `bundle exec jekyll serve` (not just `jekyll serve`)
-- Check that your Ruby version matches the workflow (3.3)
+- Check the **Actions** tab for error details
+- Common issues:
+  - Missing `Gemfile` or syntax errors
+  - Image paths in `_config.yml` pointing to non-existent files
+  - SCSS compilation errors (should show in build logs)
 
 **Changes not appearing on live site**
 - Wait 1-2 minutes for GitHub Actions to rebuild
+- Check the **Actions** tab to verify build succeeded (green checkmark)
 - Hard refresh your browser (Ctrl+Shift+R or Cmd+Shift+R)
-- Check the Actions tab to ensure the build succeeded
+- Clear browser cache completely
+
+**Site URL is correct but shows old content**
+- GitHub Pages has CDN caching (can take 5-10 minutes)
+- Check if the latest commit triggered a build in Actions tab
+- Try accessing in private/incognito browser window
 
 ---
 
@@ -341,7 +364,7 @@ portfolio:
   - image: img/portfolio/my-new-project.jpg
     category: Web Development
     name: My Awesome Project
-    link: "https://github.com/wmorr/my-project"
+    link: "https://github.com/williammorr/my-project"
 ```
 
 ---
