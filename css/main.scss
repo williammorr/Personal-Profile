@@ -27,8 +27,25 @@
 @import "base/utilities";
 
 // -----------------------------------------------------------------------------
-// Legacy Imports (Temporary - will be split in Weeks 5-8)
+// Components - Reusable UI Elements
 // -----------------------------------------------------------------------------
-// Remaining monolithic _base.scss will be extracted into components/ and layout/
+// Buttons, service boxes, portfolio boxes extracted from legacy _base.scss
+@import "components/buttons";
+@import "components/service-box";
+@import "components/portfolio-box";
+
+// -----------------------------------------------------------------------------
+// Layout - Page Structure
+// -----------------------------------------------------------------------------
+// Navigation, header, sections, and contact layout
+@import "layout/navigation";
+@import "layout/header";
+@import "layout/sections";
+@import "layout/contact";
+
+// -----------------------------------------------------------------------------
+// Legacy Imports (Temporary - will be cleaned up in Week 7-8)
+// -----------------------------------------------------------------------------
+// Remaining monolithic _base.scss contains duplicates and extras
 @import "base";
 @import "mixins";  // Old mixins file (for backward compatibility during transition)

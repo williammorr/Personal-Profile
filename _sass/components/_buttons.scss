@@ -1,0 +1,60 @@
+// =============================================================================
+// Buttons Component
+// =============================================================================
+// Extracted button styles from monolithic _base.scss
+// Following BEM naming convention and September 2025 best practices
+// Bootstrap 5 compatible button variants
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Button Base Styles
+// -----------------------------------------------------------------------------
+// Override Bootstrap button defaults with custom styling
+// -----------------------------------------------------------------------------
+.btn {
+    @include sans-serif-font;
+    border-radius: 300px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    @include transition-all;
+}
+
+// -----------------------------------------------------------------------------
+// Button Variants
+// -----------------------------------------------------------------------------
+// Primary button - white text on primary background
+// Used for main CTAs (hero, call-to-action sections)
+// NOTE: Using SCSS variables here for darken() compatibility
+// CSS custom properties don't work with SCSS color functions
+// -----------------------------------------------------------------------------
+.btn-primary {
+    @include button-variant(white, $theme-primary, $theme-primary);
+}
+
+// -----------------------------------------------------------------------------
+// Default/Outline button - dark text on white background
+// Used for secondary actions
+// -----------------------------------------------------------------------------
+.btn-default,
+.btn-outline-secondary {
+    @include button-variant($theme-dark, white, white);
+}
+
+// -----------------------------------------------------------------------------
+// Button Sizes
+// -----------------------------------------------------------------------------
+// Extra large button size for hero sections
+// -----------------------------------------------------------------------------
+.btn-xl {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-base);
+}
+
+// -----------------------------------------------------------------------------
+// BEM Component Structure (Future Enhancement)
+// -----------------------------------------------------------------------------
+// When refactoring templates in Week 6, consider migrating to:
+// .btn--primary { ... }
+// .btn--secondary { ... }
+// .btn--xl { ... }
+// -----------------------------------------------------------------------------
