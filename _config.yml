@@ -1,10 +1,11 @@
 # Site settings
-title: William M. Orr - Portfolio
+title: William M. Orr - Professional Portfolio
 email: wotech4@live.com
 description: 'Portfolio of William M. Orr - Director of IT | IT Manager | IT Field Ops Manager'
 author: William M. Orr
-baseurl: "/" # Project site subpath
+baseurl: "" # Project site subpath
 url: "https://williammorr.com" # the base hostname & protocol for your site
+favicon: img/favicon.svg # Path to favicon file
 
 twitter_username: wmorr
 github_username: williammorr

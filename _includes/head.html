@@ -8,6 +8,12 @@
 
     <title>{{ site.title }}</title>
 
+    <!-- Favicon -->
+    {% if site.favicon %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.favicon | relative_url }}">
+    <link rel="alternate icon" type="image/svg+xml" href="{{ site.favicon | relative_url }}">
+    {% endif %}
+
     <!-- Theme Initialization (Prevent FOUC) -->
     <script>
         // This script runs immediately before any CSS loads to prevent flash of wrong theme

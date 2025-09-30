@@ -25,10 +25,9 @@
     min-width: 40px;
     min-height: 40px;
 
-    // Hover effect
+    // Hover effect - matches nav links
     &:hover {
         color: var(--color-primary);
-        background-color: var(--color-surface-alt);
     }
 
     // Active/pressed state
