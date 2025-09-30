@@ -1,9 +1,9 @@
 // =============================================================================
-// Navigation Layout
+// Navigation Layout (Week 9: Migrated to CSS Custom Properties)
 // =============================================================================
 // Extracted from monolithic _base.scss
 // Bootstrap 5 compatible navbar with scroll behavior
-// Following September 2025 best practices
+// Now uses semantic tokens from design-tokens.html for user-customizable colors
 // =============================================================================
 
 @use '../abstracts' as *;
@@ -15,11 +15,14 @@
 // Light navbar with custom branding and typography
 // Mobile: white background with hamburger menu
 // Desktop: transparent background, becomes solid on scroll (affix)
+// Blur effect for better visibility over page content
 // -----------------------------------------------------------------------------
 .navbar-light {
-    background-color: var(--color-light);
+    background-color: var(--bg-light);
     @include sans-serif-font;
     @include transition-all;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     // Brand logo/text
     .navbar-brand {
@@ -30,7 +33,7 @@
 
         &:hover,
         &:focus {
-            color: color.adjust($theme-primary, $lightness: -10%);
+            color: var(--color-primary-hover);
         }
     }
 
@@ -40,7 +43,7 @@
             text-transform: uppercase;
             font-weight: var(--font-weight-bold);
             font-size: 0.8125rem; // 13px
-            color: var(--color-dark);
+            color: var(--color-text);
 
             &:hover,
             &:focus {
@@ -60,18 +63,19 @@
 // -----------------------------------------------------------------------------
 // Transparent navbar on page load, solid white on scroll
 // Large screens only (992px and up)
+// Now uses semantic tokens for responsive color changes
 // -----------------------------------------------------------------------------
 @media (min-width: 992px) {
     .navbar-light {
-        // Initial state - transparent with white text
-        background-color: transparent;
+        // Initial state - semi-transparent with blur effect and white text
+        background-color: var(--navbar-bg);
 
         .navbar-brand {
             color: var(--color-text-faded);
 
             &:hover,
             &:focus {
-                color: var(--color-light);
+                color: var(--bg-light);
             }
         }
 
@@ -80,14 +84,14 @@
 
             &:hover,
             &:focus {
-                color: var(--color-light);
+                color: var(--bg-light);
             }
         }
 
-        // Scrolled state - solid background with dark text
-        // "affix" class added via JavaScript on scroll
-        &.affix {
-            background-color: var(--color-light);
+        // Scrolled state - more solid background with dark text and blur
+        // "navbar-shrink" class added via JavaScript on scroll
+        &.navbar-shrink {
+            background-color: var(--navbar-bg-scrolled);
             box-shadow: var(--shadow-sm);
 
             .navbar-brand {
@@ -96,12 +100,12 @@
 
                 &:hover,
                 &:focus {
-                    color: color.adjust($theme-primary, $lightness: -10%);
+                    color: var(--color-primary-hover);
                 }
             }
 
             .navbar-nav .nav-link {
-                color: var(--color-dark);
+                color: var(--color-text);
 
                 &:hover,
                 &:focus {

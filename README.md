@@ -139,6 +139,81 @@ github_username: yourhandle
 brand_name: Your Brand          # Top-left navbar brand
 ```
 
+### Color Theme (New in Week 9!)
+
+**🎨 User-Customizable Color Theming System**
+
+Your site now supports easy color customization! Choose from 5 pre-defined color palettes without editing any CSS.
+
+#### Available Color Palettes
+
+- **orange** - Warm, energetic (default)
+- **blue** - Professional, trustworthy
+- **green** - Fresh, growth-oriented
+- **purple** - Creative, sophisticated
+- **red** - Bold, attention-grabbing
+
+#### How to Change Colors
+
+Edit the `theme` section in `_config.yml`:
+
+```yaml
+theme:
+  brand_primary: "orange"      # Main brand color - Choose: orange, blue, green, purple, red
+  brand_secondary: "blue"      # Optional accent color - Choose: orange, blue, green, purple, red, or null
+  neutral: "slate"             # Text/backgrounds - Choose: slate, gray
+  mode: "light"                # Theme mode - Choose: light, dark, auto
+```
+
+Then rebuild your site:
+```bash
+bundle exec jekyll build
+```
+
+**That's it!** All buttons, links, navigation, and portfolio overlays will automatically use your chosen colors.
+
+#### Theme Modes
+
+The theming system now supports three modes:
+
+- **`light`** - Always display light theme (white background, dark text)
+- **`dark`** - Always display dark theme (dark background, light text)
+- **`auto`** - Automatically respect user's OS/browser theme preference
+
+For complete details, see [THEMING.md](THEMING.md).
+
+#### Separation of Concerns
+
+The theming system separates user configuration from system files:
+
+**User Configuration** (`_config.yml`):
+- ✅ Simple color selection (brand_primary, brand_secondary, neutral)
+- ✅ No technical knowledge required
+- ✅ Clear options and comments
+
+**System Files** (not user-editable):
+- `_data/color-palettes.yml` - Color palette library (5 palettes × 10 shades each)
+- `_includes/design-tokens.html` - Dynamic token generation logic
+- `_sass/` - Component styles using semantic tokens
+
+#### Under the Hood
+
+The theming system uses:
+- **Color Palette Library** - 5 palettes × 10 shades each (50-900) in `_data/color-palettes.yml`
+- **Liquid Template Engine** - Resolves user selection to CSS custom properties
+- **Semantic Tokens** - Components reference meaningful names (`--color-primary`, `--color-secondary`, `--color-text`)
+- **CSS Custom Properties** - Runtime theming without recompilation
+
+See `_includes/design-tokens.html` for the full token architecture.
+
+#### Implementation Status
+
+- ✅ **Phase 1** (Complete): Color palette selection system
+- ✅ **Phase 2** (Complete): Multi-color support (5 palettes)
+- ✅ **Phase 3** (Complete): Dark theme support with `mode: "light"`, `mode: "dark"`, and `mode: "auto"`
+- 🔄 **Phase 4** (Future): Theme toggle button (optional)
+- 🔄 **Phase 5** (Future): Custom color overrides for advanced users
+
 ### Hero Section
 The landing section with heading and call-to-action:
 ```yaml
@@ -251,10 +326,40 @@ Social links (Twitter, Email, GitHub) are shown automatically using the username
 This project uses the **7-1 Pattern** with modern Sass module system (`@use`/`@forward`):
 
 - **No deprecation warnings** - Uses `color.adjust()` instead of deprecated `darken()`
-- **CSS Custom Properties** - Runtime theming support for future light/dark modes
+- **CSS Custom Properties** - Runtime theming support for light/dark modes
 - **Modular & maintainable** - Each component in its own file
 - **BEM-ready** - Structured for easy migration to BEM naming
 - **Bootstrap 5 compatible** - Modern grid and components
+- **User-Customizable Colors** (Week 9) - Choose from 5 color palettes via `_config.yml`
+
+#### CSS File Structure
+
+**Design Tokens (Dynamic):**
+- `_includes/design-tokens.html` → Generates CSS custom properties from user theme selection
+  - Reads color selection from `_config.yml` (brand_primary, brand_secondary, neutral)
+  - Resolves palettes from `_data/color-palettes.yml` (system file)
+  - Creates 20-30 color shades depending on configuration
+  - Defines semantic tokens (--color-primary, --color-secondary, --color-text, --bg-dark, etc.)
+  - Injected into `<head>` before main.css for proper cascade
+
+**Your Custom Styles (Modular):**
+- `css/main.scss` → Compiles to `main.css` (13KB)
+- `_sass/` → Modular SCSS architecture (7-1 pattern)
+  - `abstracts/` - Variables, functions, mixins (now includes token documentation)
+  - `base/` - Reset, typography, utilities
+  - `components/` - Buttons, service boxes, portfolio boxes (now use CSS custom properties)
+  - `layout/` - Navigation, header, sections, contact (now use CSS custom properties)
+  - `pages/` - Page-specific styles
+  - `vendors/` - Bootstrap 5 overrides
+
+**Third-Party Libraries (CDN):**
+- **Bootstrap 5.3.8** - Framework via CDN (no local files)
+- **Font Awesome 6.7.2** - Icons via CDN (no local files)
+
+**Vendor CSS (Local):**
+- `css/animate.min.css` (53KB) - Animate.css library for WOW.js animations
+  - **Not modularized** - Third-party library kept separate per best practices
+  - Update by replacing entire file when needed
 
 ---
 
@@ -371,33 +476,83 @@ portfolio:
 
 ## Theme Customization
 
-### Colors
+### Colors (Week 9: User-Customizable System)
 
-Theme colors are defined as **CSS Custom Properties** in `_sass/abstracts/_variables.scss`:
+**✨ Easy Color Customization** - No CSS editing required!
 
-```scss
-:root {
-  --color-primary: #F05F40;       // Primary color (buttons, links)
-  --color-primary-dark: #d94621;  // Hover states
-  --color-dark: #222;              // Dark sections background
-  --color-light: #fff;             // Light sections background
-}
+Theme colors are now configured in `_config.yml` using pre-defined color palettes:
+
+```yaml
+theme:
+  brand_primary: "orange"      # Main brand color
+  brand_secondary: "blue"      # Optional accent color (or null)
+  neutral: "slate"             # Text/backgrounds
+  mode: "light"                # Theme mode - Choose: light, dark, auto
 ```
 
-**Benefits of CSS Custom Properties:**
-- Runtime theming (can be changed without rebuilding)
-- Future-ready for light/dark mode switching
-- Browser DevTools can inspect/change values live
+**How it works:**
 
-### Backward Compatibility
+1. **User Configuration** - Simple color selection in `_config.yml` (brand_primary, brand_secondary, neutral)
+2. **Color Palette Library** - System file `_data/color-palettes.yml` contains 5 palettes × 10 shades each
+3. **Dynamic Token Generation** - `_includes/design-tokens.html` resolves your selection
+4. **CSS Custom Properties** - Generates semantic tokens (--color-primary, --color-secondary, --color-text, etc.)
+5. **Component Integration** - All components reference semantic tokens, not hardcoded colors
 
-SCSS variables are still available for color functions:
-```scss
-$theme-primary: #F05F40;
-$theme-dark: #222;
+**Example: Switching to Blue Primary with Green Secondary**
+
+```yaml
+# Change this in _config.yml
+theme:
+  brand_primary: "blue"
+  brand_secondary: "green"
 ```
 
-Change values in `_sass/abstracts/_variables.scss` and rebuild (`bundle exec jekyll build`).
+Then rebuild:
+```bash
+bundle exec jekyll build
+```
+
+All buttons, navigation, links, and portfolio overlays instantly use your chosen palette!
+
+**Available Palettes:**
+- **orange** (#f97316) - Warm, energetic (default)
+- **blue** (#3b82f6) - Professional, trustworthy
+- **green** (#22c55e) - Fresh, growth-oriented
+- **purple** (#a855f7) - Creative, sophisticated
+- **red** (#ef4444) - Bold, attention-grabbing
+
+**Benefits:**
+- ✅ No CSS knowledge required
+- ✅ Consistent color system (10 shades per palette)
+- ✅ Semantic naming (primary, hover, active, text, background)
+- ✅ Runtime theming via CSS custom properties
+- ✅ Future-ready for dark mode (Phase 2)
+
+### Advanced: Custom Colors
+
+For advanced users who want colors not in the pre-defined palettes:
+
+1. Add a new palette to `_data/color-palettes.yml` (system file)
+2. Follow the same structure as existing palettes (shades 50-900)
+3. Reference your custom palette name in `theme.brand_primary` or `theme.brand_secondary`
+
+**Example** (`_data/color-palettes.yml`):
+```yaml
+teal:
+  50: "#f0fdfa"
+  100: "#ccfbf1"
+  # ... continue with 200-900
+  500: "#14b8a6"    # Base color
+  900: "#134e4a"
+```
+
+Then use in `_config.yml`:
+```yaml
+theme:
+  brand_primary: "teal"
+```
+
+See `_includes/design-tokens.html` for the complete token architecture.
 
 ---
 
