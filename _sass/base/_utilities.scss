@@ -13,9 +13,13 @@
     background-color: var(--bg-primary);
 }
 
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
 .bg-dark {
-    background-color: var(--bg-dark);
-    color: var(--color-light);
+    background-color: var(--bg-inverted);
+    color: var(--text-inverted);
 }
 
 // -----------------------------------------------------------------------------

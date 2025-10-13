@@ -1,9 +1,9 @@
 // =============================================================================
-// Portfolio Box Component
+// Portfolio Box Component (Week 9: Migrated to CSS Custom Properties)
 // =============================================================================
 // Extracted from monolithic _base.scss
 // Image gallery component with hover overlay effect
-// Following BEM naming convention and September 2025 best practices
+// Now uses semantic tokens from design-tokens.html for user-customizable colors
 // =============================================================================
 
 @use '../abstracts' as *;
@@ -30,14 +30,18 @@
 // -----------------------------------------------------------------------------
 // Portfolio Caption Overlay
 // -----------------------------------------------------------------------------
-// Full-size overlay with primary color background
+// Full-size overlay with primary color background (90% opacity)
 // Hidden by default, revealed on hover
+// Uses user-selected primary color from _config.yml
 // -----------------------------------------------------------------------------
 .portfolio-box-caption {
-    color: var(--color-light);
+    color: var(--color-text-inverse);
     opacity: 0;
     display: block;
-    background: rgba($theme-primary, 0.9);
+    // Create semi-transparent overlay using color-mix (modern approach)
+    // Fallback: use primary color with rgba for older browsers
+    background: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 90%, transparent);
     position: absolute;
     bottom: 0;
     text-align: center;
